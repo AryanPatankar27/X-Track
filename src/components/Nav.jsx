@@ -15,7 +15,7 @@ const Nav = ({userName}) => {
         to="/"
         aria-label='Go to home'>
         <img src={logomark} alt="" height={30} />
-        <span>Expense Tracker</span>
+        <span>XTrack</span>
         </NavLink>
         {
             userName && (
