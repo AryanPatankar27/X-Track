@@ -1,13 +1,13 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import {
-  createBrowserRouter,
+  createHashRouter,  // <-- Changed from createBrowserRouter
   RouterProvider,
 } from "react-router-dom";
 
 // Library
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Routes
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
@@ -17,12 +17,12 @@ import Error from "./pages/Error";
 import Main, { mainLoader } from "./Layouts/Main";
 
 // Actions
-import {logoutAction} from '../actions/logout';
+import { logoutAction } from "../actions/logout";
 import ExpensesPage, { expensesAction, expensesLoader } from "./pages/ExpensesPage";
 import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
 import { deleteBudget } from "../actions/deleteBudget";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Main />,
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <ExpensesPage />,
         loader: expensesLoader,
         action: expensesAction,
-        errorElement: <Error />
+        errorElement: <Error />,
       },
       {
         path: "budget/:id",
@@ -53,25 +53,24 @@ const router = createBrowserRouter([
           {
             path: "delete",
             action: deleteBudget,
-          }
-        ]
+          },
+        ],
       },
       {
         path: "/logout",
-        action: logoutAction
-      }
-    ]
+        action: logoutAction,
+      },
+    ],
   },
-  
 ]);
 
 function App() {
   return (
-      <div className="App">
-        <RouterProvider router={router} />
-        <ToastContainer />
-      </div>
-  )
+    <div className="App">
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </div>
+  );
 }
 
-export default App
+export default App;
