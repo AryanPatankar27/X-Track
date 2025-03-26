@@ -1,11 +1,5 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {
-  createHashRouter,  // <-- Changed from createBrowserRouter
-  RouterProvider,
-} from "react-router-dom";
-
-// Library
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -57,7 +51,7 @@ const router = createHashRouter([
         ],
       },
       {
-        path: "/logout",
+        path: "logout",
         action: logoutAction,
       },
     ],
